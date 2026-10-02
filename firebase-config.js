@@ -1,15 +1,10 @@
-// Incolla qui la configurazione del tuo progetto Firebase
-// (Console Firebase → Impostazioni progetto → Le tue app → App web → Configurazione).
-// Finché resta null l'agenda funziona in "modalità prova": i dati restano solo sul dispositivo.
-window.FIREBASE_CONFIG = null;
-
-/* Esempio:
+// Configurazione del progetto Firebase "agenda-matteo-6713a".
+// Questi valori non sono segreti: la protezione sta nella password e nelle regole di Firestore.
 window.FIREBASE_CONFIG = {
-  apiKey: "AIza...",
-  authDomain: "mia-agenda.firebaseapp.com",
-  projectId: "mia-agenda",
-  storageBucket: "mia-agenda.appspot.com",
-  messagingSenderId: "1234567890",
-  appId: "1:1234567890:web:abcdef"
+  apiKey: "AIzaSyBXdJLtE9RXDAzOsD6wo_bBd5276_VOi-o",
+  authDomain: "agenda-matteo-6713a.firebaseapp.com",
+  projectId: "agenda-matteo-6713a",
+  storageBucket: "agenda-matteo-6713a.firebasestorage.app",
+  messagingSenderId: "490460499675",
+  appId: "1:490460499675:web:6297ab66aab7aa36d386fe"
 };
-*/
