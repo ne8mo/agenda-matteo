@@ -22,13 +22,13 @@ modalità prova: nessuna password e dati salvati solo sul dispositivo.
 2. **Build → Firestore Database → Crea database**: sede europea (es. `eur3`), **modalità produzione**.
 3. **Build → Authentication → Inizia → Email/password**: attiva solo la prima opzione e salva.
 4. **Authentication → Utenti → Aggiungi utente**:
-   - Email: `agenda@agenda-a-tre.app` (la parte prima della @ è il **nome utente**: qui `agenda`).
+   - Email: `agenda_lavoro@daje.it` (la parte prima della @ è il **nome utente**: qui `agenda_lavoro`).
      Non è un indirizzo vero e non riceve posta: serve solo a Firebase.
    - Password: quella che userete in tre (almeno 6 caratteri).
 5. **Authentication → Impostazioni → Azioni utente**: togli la spunta da **Abilita creazione (registrazione)**,
    così nessun altro può creare accessi.
 6. Copia il contenuto di `firestore.rules` in **Firestore → Regole** e premi **Pubblica**.
-   Se hai scelto un nome utente diverso da `agenda`, cambialo anche nelle regole.
+   Se cambi l'email dell'utente, cambiala anche nelle regole e in `USER_DOMAIN` dentro `index.html`.
 7. **Impostazioni progetto** (ingranaggio) → **Le tue app** → icona `</>` (app web) → registra l'app
    e copia l'oggetto `firebaseConfig`.
 8. Apri `firebase-config.js` e sostituisci `window.FIREBASE_CONFIG = null;`

@@ -725,7 +725,7 @@ h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;letter-spacing:
   const loadScript = src => new Promise((ok, ko) => document.head.append(el("script", { src, onload: ok, onerror: ko })));
   const FB = "https://www.gstatic.com/firebasejs/10.12.2/";
   // Firebase vuole un indirizzo email: il nome utente viene trasformato in un indirizzo interno, mai usato per scrivere.
-  const USER_DOMAIN = "agenda-a-tre.app";
+  const USER_DOMAIN = "daje.it";
   const toLogin = u => { u = u.trim().toLowerCase(); return u.includes("@") ? u : u + "@" + USER_DOMAIN; };
   const AUTH_ERR = {
     "auth/invalid-credential": "Nome utente o password non corretti.", "auth/wrong-password": "Nome utente o password non corretti.",
