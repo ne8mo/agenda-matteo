@@ -327,7 +327,9 @@ h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;letter-spacing:
     watch(col, cb) {
       if (this.db) {
         this.db.collection(col).onSnapshot(s => cb(s.docs.map(d => ({ id: d.id, ...d.data() }))),
-          e => banner(e.code === "permission-denied" ? "Questo accesso non è autorizzato a usare l'agenda: controlla le regole di Firebase." : "Connessione al database interrotta. Ricarica la pagina."));
+          e => banner(e.code === "permission-denied"
+          ? "Accesso riuscito come " + (S.email || "?") + ", ma il database rifiuta la lettura. In Firebase controlla che le regole di Firestore siano pubblicate e che contengano esattamente questa email."
+          : "Il database non risponde (" + (e.code || "errore") + "). Ricarica la pagina."));
       } else {
         (this.listeners[col] ||= []).push(cb); cb(this._read(col));
       }
@@ -349,7 +351,7 @@ h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;letter-spacing:
     catch (e) {
       if (e?.code === "permission-denied") toast("Questo accesso non è autorizzato a modificare l'agenda.");
       else if (e?.code === "resource-exhausted") toast("Limite gratuito di Firebase raggiunto per oggi.");
-      else toast("Salvataggio non riuscito. Riprova tra poco.");
+      else toast("Salvataggio non riuscito (" + (e?.code || "errore") + "). Riprova tra poco.");
       return false;
     }
   }
@@ -787,7 +789,7 @@ h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;letter-spacing:
         if (!u) { if (started) location.reload(); else openLogin(auth); return; }
         if (started) return;
         started = true; $("layer").replaceChildren();
-        S.myUid = null; // account condiviso: la persona si sceglie dopo l'accesso
+        S.email = u.email; S.myUid = null; // account condiviso: la persona si sceglie dopo l'accesso
         store.db = { collection: c => root.collection(c) };
         startWatching();
       });
