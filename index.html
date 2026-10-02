@@ -548,6 +548,8 @@ h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;letter-spacing:
     const onKey = e => { if (e.key === "Escape" && !opts.locked) close(); };
     document.addEventListener("keydown", onKey);
     const box = el("div", { class: "modal", role: "dialog", "aria-modal": "true" });
+    const append = box.append.bind(box);
+    box.append = (...kids) => append(...kids.filter(k => k != null && k !== false)); // ignora le parti condizionali spente
     const ov = el("div", { class: "overlay", onclick: e => { if (e.target === ov && !opts.locked) close(); } }, box);
     build(box, close); layer.append(ov);
     box.querySelector("input:not([type=hidden]),select,textarea")?.focus();
@@ -792,7 +794,7 @@ h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;letter-spacing:
       return;
     }
     store.local = true;
-    banner("Modalità prova: i dati restano solo su questo dispositivo e non c'è password. Per condividere l'agenda con accesso protetto, collega Firebase (istruzioni nel file LEGGIMI.md).");
+    banner("Modalità prova: i dati restano solo su questo dispositivo e non c'è password. Per condividere l'agenda con accesso protetto, collega Firebase (istruzioni nel file README.md).");
     startWatching();
   }
   boot();
